@@ -1,0 +1,100 @@
+import random
+
+def get_motivation():
+    """Main function to run the motivation generator"""
+    
+    # Step 1: Welcome & Get Name
+    print("🌞 Welcome to Daily Motivation Generator 🌞")
+    print("=" * 50)
+    name = input("What's your name? ").strip()
+    if not name:
+        name = "Friend"
+    print(f"Hi {name}! Let's lift your mood today 💪\n")
+    
+    # Step 3 & 4: Quotes Database
+    quotes_data = {
+        "1": {
+            "mood": "Happy",
+            "emoji": "😄",
+            "quotes": [
+                "Keep shining, your energy lights up the world! ✨",
+                "Happiness looks amazing on you! 😊",
+                "Stay positive — you're doing great, keep that smile alive 😄",
+                "Your joy is contagious — spread it everywhere! 🌈",
+                "This is your moment to shine even brighter! ⭐"
+            ]
+        },
+        "2": {
+            "mood": "Sad",
+            "emoji": "❤️",
+            "quotes": [
+                "It's okay to feel down — even stars need darkness to shine 🌌",
+                "You've handled tougher days before, you'll get through this too 💪",
+                "Crying means your heart is healing ❤️",
+                "This feeling is temporary, but your strength is forever 🦾",
+                "Every storm passes, and sunshine always follows 🌤️"
+            ]
+        },
+        "3": {
+            "mood": "Tired",
+            "emoji": "⚡",
+            "quotes": [
+                "Take a deep breath — progress needs rest too 😌",
+                "Recharge today, conquer tomorrow ⚡",
+                "Even heroes need sleep — rest and rise again 🦸‍♂️",
+                "Your body is asking for rest — listen to it, you deserve it 💤",
+                "Rest is productive — you're refueling for greatness 🔋"
+            ]
+        },
+        "4": {
+            "mood": "Unmotivated",
+            "emoji": "🔥",
+            "quotes": [
+                "Discipline beats motivation — just take one small step today 🚀",
+                "You don't need to be perfect, just consistent 🧠",
+                "Remember why you started — you've got this 🔥",
+                "Progress over perfection — tiny wins add up 🎯",
+                "The best time to start is now — do one thing today 💫"
+            ]
+        }
+    }
+    
+    # Main loop for repeat functionality
+    while True:
+        # Step 2: Ask User's Mood
+        print("How are you feeling today?")
+        print("1️⃣  Happy 😄")
+        print("2️⃣  Sad 😢")
+        print("3️⃣  Tired 😴")
+        print("4️⃣  Unmotivated 😔")
+        print()
+        
+        choice = input("Enter your mood (1-4): ").strip()
+        
+        # Step 5: Personalized Output
+        if choice in quotes_data:
+            data = quotes_data[choice]
+            quote = random.choice(data["quotes"])
+            
+            print("\n" + "=" * 50)
+            print(f"✨ Your Daily Motivation ({data['mood']} {data['emoji']}) ✨")
+            print("=" * 50)
+            print(f"\n{name}, {quote}\n")
+            print("💚 Keep pushing forward — small steps create big changes!")
+            print("=" * 50)
+        else:
+            print("\n❌ Invalid choice! But remember — every day is a new start 🌅")
+            continue
+        
+        # Step 6: Repeat Option
+        print()
+        again = input("Would you like another quote? (yes/no): ").lower().strip()
+        if again not in ("yes", "y"):
+            print(f"\n👋 Have an amazing day, {name}! You've got this! 🚀\n")
+            break
+        else:
+            print("\n🌟 Let's go again! 💫\n")
+
+# Run the program
+if __name__ == "__main__":
+    get_motivation()
